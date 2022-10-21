@@ -7,39 +7,43 @@ using TMPro;
 public class CoinManager : MonoBehaviour
 {
     public static CoinManager instance;
-    public float TotalCoins = 0;
-    public float PerSecond = 1;
-    public float ClickCoin = 1;
+    public ulong TotalCoins = 0;
+    public ulong PerSecond = 1;
+    public ulong ClickCoin = 1;
     public TMP_Text TotalCoinsText;
     public TMP_Text PerSecondText;
 
     public Text DistanceText;
 
-    protected float Timer;
+    protected ulong Timer;
+
+    float temp;
 
     void Awake()
     {
         instance = this;
-        TotalCoins = PlayerPrefs.GetFloat("Coins", 1);
-        PerSecond = PlayerPrefs.GetFloat("PerSecond", 1);
-        ClickCoin = PlayerPrefs.GetFloat("ClickCoin", 1);
+        TotalCoins = ulong.Parse(PlayerPrefs.GetString("Coins","0"),0);
+        PerSecond = ulong.Parse(PlayerPrefs.GetString("PerSecond","0"));
+        ClickCoin = ulong.Parse(PlayerPrefs.GetString("ClickCoin","0"));
+
 
         InvokeRepeating("SaveGame", 5f, 60f);
-
+        temp = TotalCoins;
     }
 
     void Update()
     {
-        Timer += Time.deltaTime;
 
-        TotalCoins += PerSecond * Time.deltaTime;
+        temp += PerSecond *Time.deltaTime;
+
+        TotalCoins = (ulong)temp;
 
         PerSecondText.text = "PerSecond: " + Display(PerSecond);
 
         TotalCoinsText.text = Display(TotalCoins) + "\nCoins";
 
     }
-    public string Display(float valueToConvert)
+    public string Display(ulong valueToConvert)
     {
         string converted;
 
@@ -75,9 +79,9 @@ public class CoinManager : MonoBehaviour
     }
     void SaveGame()
     {
-        PlayerPrefs.SetFloat("Coins", TotalCoins);
-        PlayerPrefs.SetFloat("PerSecond", PerSecond);
-        PlayerPrefs.SetFloat("ClickCoin", ClickCoin);
+        PlayerPrefs.SetString("Coins", TotalCoins.ToString());
+        PlayerPrefs.SetString("PerSecond", PerSecond.ToString());
+        PlayerPrefs.SetString("ClickCoin", ClickCoin.ToString());
         print("Game Saved !");
     }
 

@@ -7,16 +7,16 @@ using TMPro;
 
 public class Store : MonoBehaviour
 {
-    [SerializeField] float EmployeeCount = 0;
+    [SerializeField] ulong EmployeeCount = 0;
 
-    [SerializeField] float EmployeePrice = 100;
+    [SerializeField] ulong EmployeePrice = 100;
 
-    [SerializeField] float CursorCount = 0;
+    [SerializeField] ulong CursorCount = 0;
 
-    [SerializeField] float CursorPrice = 500;
+    [SerializeField] ulong CursorPrice = 500;
 
-    public int addPerSec = 1;
-    public int addClickCoin = 3;
+    public ulong addPerSec = 1;
+    public ulong addClickCoin = 3;
 
     public TMP_Text EmployeeCountText;
 
