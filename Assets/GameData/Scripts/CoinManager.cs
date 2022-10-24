@@ -22,13 +22,18 @@ public class CoinManager : MonoBehaviour
     void Awake()
     {
         instance = this;
-        TotalCoins = ulong.Parse(PlayerPrefs.GetString("Coins","0"));
-        PerSecond = ulong.Parse(PlayerPrefs.GetString("PerSecond","0"));
-        ClickCoin = ulong.Parse(PlayerPrefs.GetString("ClickCoin","0"));
 
+        load();
 
         InvokeRepeating("SaveGame", 5f, 60f);
         temp = TotalCoins;
+    }
+
+    void load()
+    {
+        TotalCoins = ulong.Parse(PlayerPrefs.GetString("Coins", "0"));
+        PerSecond = ulong.Parse(PlayerPrefs.GetString("PerSecond", "1"));
+        ClickCoin = ulong.Parse(PlayerPrefs.GetString("ClickCoin", "1"));
     }
 
     void Update()
@@ -82,6 +87,7 @@ public class CoinManager : MonoBehaviour
         PlayerPrefs.SetString("Coins", TotalCoins.ToString());
         PlayerPrefs.SetString("PerSecond", PerSecond.ToString());
         PlayerPrefs.SetString("ClickCoin", ClickCoin.ToString());
+        Store.instance.saveData();
         print("Game Saved !");
     }
 
