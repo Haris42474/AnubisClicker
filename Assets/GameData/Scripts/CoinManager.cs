@@ -45,7 +45,7 @@ public class CoinManager : MonoBehaviour
 
         PerSecondText.text = "PerSecond: " + Display(PerSecond);
 
-        TotalCoinsText.text = Display(TotalCoins) + "\nCoins";
+        TotalCoinsText.text = Display(TotalCoins) + "";
 
     }
     public string Display(ulong valueToConvert)
