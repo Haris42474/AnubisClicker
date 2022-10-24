@@ -17,12 +17,12 @@ public class CoinManager : MonoBehaviour
 
     protected ulong Timer;
 
-    float temp;
+    public float temp;
 
     void Awake()
     {
         instance = this;
-        TotalCoins = ulong.Parse(PlayerPrefs.GetString("Coins","0"),0);
+        TotalCoins = ulong.Parse(PlayerPrefs.GetString("Coins","0"));
         PerSecond = ulong.Parse(PlayerPrefs.GetString("PerSecond","0"));
         ClickCoin = ulong.Parse(PlayerPrefs.GetString("ClickCoin","0"));
 
@@ -95,9 +95,8 @@ public class CoinManager : MonoBehaviour
 
         Text tempTextBox = Instantiate(DistanceText, transform) as Text;
         tempTextBox.text = "+ " + ClickCoin;
-        //tempTextBox.transform.SetParent(this.transform, false);
 
-        TotalCoins += ClickCoin;
+        temp += ClickCoin;
         TotalCoinsText.text = TotalCoins + "\nCoins";
         this.transform.GetChild(1).gameObject.GetComponent<Animator>().enabled = true;
         Invoke("ResetClick", 1.2f);
