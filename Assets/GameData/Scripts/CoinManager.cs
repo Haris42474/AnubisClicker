@@ -91,11 +91,6 @@ public class CoinManager : MonoBehaviour
         print("Game Saved !");
     }
 
-    void ResetClick()
-    {
-        this.transform.GetChild(1).gameObject.SetActive(false);
-    }
-
     public void OnClick()
     {
 
@@ -103,8 +98,6 @@ public class CoinManager : MonoBehaviour
         tempTextBox.text = "+ " + ClickCoin;
 
         temp += ClickCoin;
-        TotalCoinsText.text = TotalCoins + "\nCoins";
-        this.transform.GetChild(0).gameObject.GetComponent<Animator>().enabled = true;
-        Invoke("ResetClick", 1.2f);
+
     }
 }
