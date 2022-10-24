@@ -104,7 +104,7 @@ public class CoinManager : MonoBehaviour
 
         temp += ClickCoin;
         TotalCoinsText.text = TotalCoins + "\nCoins";
-        this.transform.GetChild(1).gameObject.GetComponent<Animator>().enabled = true;
+        this.transform.GetChild(0).gameObject.GetComponent<Animator>().enabled = true;
         Invoke("ResetClick", 1.2f);
     }
 }
