@@ -21,12 +21,18 @@ public class Store : MonoBehaviour
 
     public List<TextMeshProUGUI> Description;
 
+    public List<TextMeshProUGUI> ECount;
+
     const float mainDigit = 1.15f;
 
     private void Awake()
     {
         instance = this;
-        saveData();
+        if(PlayerPrefs.GetInt("check", 0)==0)
+        {
+            saveData();
+            PlayerPrefs.SetInt("check", 1);
+        }
     }
 
     void load()
@@ -40,11 +46,12 @@ public class Store : MonoBehaviour
     }
     void Start()
     {
+        load();
         for(int i=0;i<10;i++)
         {
             Description[i].text = "Cost : " + CoinManager.instance.Display(EmployeePrice[i]) + " c\nBuy " + EmployeeType[i] + " to add per second count: +" + CoinManager.instance.Display(addPerSec[i]);
+            ECount[i].text = EmployeeCount[i] + "";
         }
-        load();
     }
     public void AddEmployee1()
     {
@@ -55,6 +62,7 @@ public class Store : MonoBehaviour
             EmployeeCount[0]++;
             EmployeePrice[0] = (ulong)Mathf.CeilToInt(DefaultPrice[0] * (Mathf.Pow(mainDigit, EmployeeCount[0])));
             Description[0].text = "Cost : " + CoinManager.instance.Display(EmployeePrice[0]) + " c\nBuy " + EmployeeType[0] + " to add per second count: +" + CoinManager.instance.Display(addPerSec[0]);
+            ECount[0].text = EmployeeCount[0] + "";
         }
 
     }
@@ -67,6 +75,7 @@ public class Store : MonoBehaviour
             EmployeeCount[1]++;
             EmployeePrice[1] = (ulong)Mathf.CeilToInt(DefaultPrice[1] * (Mathf.Pow(mainDigit, EmployeeCount[1])));
             Description[1].text = "Cost : " + CoinManager.instance.Display(EmployeePrice[1]) + " c\nBuy " + EmployeeType[1] + " to add per second count: +" + CoinManager.instance.Display(addPerSec[1]);
+            ECount[1].text = EmployeeCount[1] + "";
         }
 
     }
@@ -79,6 +88,7 @@ public class Store : MonoBehaviour
             EmployeeCount[2]++;
             EmployeePrice[2] = (ulong)Mathf.CeilToInt(DefaultPrice[2] * (Mathf.Pow(mainDigit, EmployeeCount[2])));
             Description[2].text = "Cost : " + CoinManager.instance.Display(EmployeePrice[2]) + " c\nBuy " + EmployeeType[2] + " to add per second count: +" + CoinManager.instance.Display(addPerSec[2]);
+            ECount[2].text = EmployeeCount[2] + "";
         }
 
     }
@@ -91,6 +101,7 @@ public class Store : MonoBehaviour
             EmployeeCount[3]++;
             EmployeePrice[3] = (ulong)Mathf.CeilToInt(DefaultPrice[3] * (Mathf.Pow(mainDigit, EmployeeCount[3])));
             Description[3].text = "Cost : " + CoinManager.instance.Display(EmployeePrice[3]) + " c\nBuy " + EmployeeType[3] + " to add per second count: +" + CoinManager.instance.Display(addPerSec[3]);
+            ECount[3].text = EmployeeCount[3] + "";
         }
 
     }
@@ -103,6 +114,7 @@ public class Store : MonoBehaviour
             EmployeeCount[4]++;
             EmployeePrice[4] = (ulong)Mathf.CeilToInt(DefaultPrice[4] * (Mathf.Pow(mainDigit, EmployeeCount[4])));
             Description[4].text = "Cost : " + CoinManager.instance.Display(EmployeePrice[4]) + " c\nBuy " + EmployeeType[4] + " to add per second count: +" + CoinManager.instance.Display(addPerSec[4]);
+            ECount[4].text = EmployeeCount[4] + "";
         }
 
     }
@@ -115,6 +127,7 @@ public class Store : MonoBehaviour
             EmployeeCount[5]++;
             EmployeePrice[5] = (ulong)Mathf.CeilToInt(DefaultPrice[5] * (Mathf.Pow(mainDigit, EmployeeCount[5])));
             Description[5].text = "Cost : " + CoinManager.instance.Display(EmployeePrice[5]) + " c\nBuy " + EmployeeType[5] + " to add per second count: +" + CoinManager.instance.Display(addPerSec[5]);
+            ECount[5].text = EmployeeCount[5] + "";
         }
 
     }
@@ -127,6 +140,7 @@ public class Store : MonoBehaviour
             EmployeeCount[6]++;
             EmployeePrice[6] = (ulong)Mathf.CeilToInt(DefaultPrice[6] * (Mathf.Pow(mainDigit, EmployeeCount[6])));
             Description[6].text = "Cost : " + CoinManager.instance.Display(EmployeePrice[6]) + " c\nBuy " + EmployeeType[6] + " to add per second count: +" + CoinManager.instance.Display(addPerSec[6]);
+            ECount[6].text = EmployeeCount[6] + "";
         }
 
     }
@@ -139,6 +153,7 @@ public class Store : MonoBehaviour
             EmployeeCount[7]++;
             EmployeePrice[7] = (ulong)Mathf.CeilToInt(DefaultPrice[7] * (Mathf.Pow(mainDigit, EmployeeCount[0])));
             Description[7].text = "Cost : " + CoinManager.instance.Display(EmployeePrice[7]) + " c\nBuy " + EmployeeType[7] + " to add per second count: +" + CoinManager.instance.Display(addPerSec[7]);
+            ECount[7].text = EmployeeCount[7] + "";
         }
 
     }
@@ -151,6 +166,7 @@ public class Store : MonoBehaviour
             EmployeeCount[8]++;
             EmployeePrice[8] = (ulong)Mathf.CeilToInt(DefaultPrice[8] * (Mathf.Pow(mainDigit, EmployeeCount[8])));
             Description[8].text = "Cost : " + CoinManager.instance.Display(EmployeePrice[8]) + " c\nBuy " + EmployeeType[8] + " to add per second count: +" + CoinManager.instance.Display(addPerSec[8]);
+            ECount[8].text = EmployeeCount[8] + "";
         }
 
     }
@@ -163,6 +179,7 @@ public class Store : MonoBehaviour
             EmployeeCount[9]++;
             EmployeePrice[9] = (ulong)Mathf.CeilToInt(DefaultPrice[9] * (Mathf.Pow(mainDigit, EmployeeCount[9])));
             Description[9].text = "Cost : " + CoinManager.instance.Display(EmployeePrice[9]) + " c\nBuy " + EmployeeType[9] + " to add per second count: +" + CoinManager.instance.Display(addPerSec[9]);
+            ECount[9].text = EmployeeCount[9] + "";
         }
 
     }
