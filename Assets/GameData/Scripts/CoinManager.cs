@@ -103,7 +103,7 @@ public class CoinManager : MonoBehaviour
         mouseWorldPosition.z = 0f;
         GameObject tempTextBox = Instantiate(DistanceText, mouseWorldPosition, DistanceText.transform.rotation);
         tempTextBox.transform.parent = GameObject.Find("MainCanvas").transform;
-        tempTextBox.transform.GetChild(0).GetComponent<Text>().text = "+ " + ClickCoin;
+        tempTextBox.transform.GetChild(0).GetComponent<TMP_Text>().text = "+ " + Display(ClickCoin);
 
         temp += ClickCoin;
 
