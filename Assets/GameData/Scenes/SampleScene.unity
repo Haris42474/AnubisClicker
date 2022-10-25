@@ -9230,8 +9230,9 @@ MonoBehaviour:
   ClickCoin: 1
   TotalCoinsText: {fileID: 1002547347}
   PerSecondText: {fileID: 2005663724}
-  DistanceText: {fileID: 7840346347310707065, guid: 282923178f837da4aa5f1f653f012e23, type: 3}
+  DistanceText: {fileID: 7840346347310707066, guid: 282923178f837da4aa5f1f653f012e23, type: 3}
   audio: {fileID: 1543765312}
+  mainCamera: {fileID: 963194227}
   temp: 0
 --- !u!82 &1543765312
 AudioSource:

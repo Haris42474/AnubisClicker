@@ -12,10 +12,12 @@ public class CoinManager : MonoBehaviour
     public ulong ClickCoin = 1;
     public TMP_Text TotalCoinsText;
     public TMP_Text PerSecondText;
-
-    public Text DistanceText;
+    public GameObject DistanceText;
 
     public AudioSource audio;
+
+    [SerializeField] private Camera mainCamera;
+    Vector3 mouseWorldPosition;
 
     protected ulong Timer;
 
@@ -96,8 +98,12 @@ public class CoinManager : MonoBehaviour
     public void OnClick()
     {
         audio.Play();
-        Text tempTextBox = Instantiate(DistanceText, transform) as Text;
-        tempTextBox.text = "+ " + ClickCoin;
+
+        mouseWorldPosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+        mouseWorldPosition.z = 0f;
+        GameObject tempTextBox = Instantiate(DistanceText, mouseWorldPosition, DistanceText.transform.rotation);
+        tempTextBox.transform.parent = GameObject.Find("MainCanvas").transform;
+        tempTextBox.transform.GetChild(0).GetComponent<Text>().text = "+ " + ClickCoin;
 
         temp += ClickCoin;
 
