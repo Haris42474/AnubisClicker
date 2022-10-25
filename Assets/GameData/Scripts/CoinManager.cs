@@ -15,6 +15,8 @@ public class CoinManager : MonoBehaviour
 
     public Text DistanceText;
 
+    public AudioSource audio;
+
     protected ulong Timer;
 
     public float temp;
@@ -93,7 +95,7 @@ public class CoinManager : MonoBehaviour
 
     public void OnClick()
     {
-
+        audio.Play();
         Text tempTextBox = Instantiate(DistanceText, transform) as Text;
         tempTextBox.text = "+ " + ClickCoin;
 
