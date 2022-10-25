@@ -25,6 +25,10 @@ public class Store : MonoBehaviour
 
     const float mainDigit = 1.15f;
 
+    [SerializeField] AudioSource audio;
+
+    public List<AudioClip> Sounds;
+
     private void Awake()
     {
         instance = this;
@@ -33,6 +37,7 @@ public class Store : MonoBehaviour
             saveData();
             PlayerPrefs.SetInt("check", 1);
         }
+        
     }
 
     void load()
@@ -57,12 +62,17 @@ public class Store : MonoBehaviour
     {
         if (CoinManager.instance.TotalCoins >= EmployeePrice[0])
         {
+            audio.PlayOneShot(Sounds[0]);
             CoinManager.instance.temp -= EmployeePrice[0];
             CoinManager.instance.PerSecond += addPerSec[0];
             EmployeeCount[0]++;
             EmployeePrice[0] = (ulong)Mathf.CeilToInt(DefaultPrice[0] * (Mathf.Pow(mainDigit, EmployeeCount[0])));
             Description[0].text = "Cost : " + CoinManager.instance.Display(EmployeePrice[0]) + " c\nBuy " + EmployeeType[0] + " to increase CPS: +" + CoinManager.instance.Display(addPerSec[0]);
             ECount[0].text = EmployeeCount[0] + "";
+        }
+        else
+        {
+            audio.PlayOneShot(Sounds[1]);
         }
 
     }
