@@ -29,6 +29,12 @@ public class Store : MonoBehaviour
 
     public List<AudioClip> Sounds;
 
+    public GameObject Statues;
+
+    int count = 0;
+
+    int countSize = 10;
+
     private void Awake()
     {
         instance = this;
@@ -48,6 +54,7 @@ public class Store : MonoBehaviour
             EmployeePrice[i] = ulong.Parse(PlayerPrefs.GetString("EmployeePrice" + (i + 1), "0"));
             addPerSec[i] = ulong.Parse(PlayerPrefs.GetString("AddPerSec" + (i + 1), "0"));
         }
+        count=PlayerPrefs.GetInt("Count", 0);
     }
     void Start()
     {
@@ -56,6 +63,15 @@ public class Store : MonoBehaviour
         {
             Description[i].text = "Cost : " + CoinManager.instance.Display(EmployeePrice[i]) + " c\nBuy " + EmployeeType[i] + " to increase CPS: +" + CoinManager.instance.Display(addPerSec[i]);
             ECount[i].text = EmployeeCount[i] + "";
+            if(EmployeeCount[i]>0)
+            {
+                count += EmployeeCount[i];
+            }
+        }
+        
+        for(int i=0;i<count;i++)
+        {
+            Statues.transform.GetChild(i).gameObject.SetActive(true);
         }
     }
     public void AddEmployee1()
@@ -69,6 +85,11 @@ public class Store : MonoBehaviour
             EmployeePrice[0] = (ulong)Mathf.CeilToInt(DefaultPrice[0] * (Mathf.Pow(mainDigit, EmployeeCount[0])));
             Description[0].text = "Cost : " + CoinManager.instance.Display(EmployeePrice[0]) + " c\nBuy " + EmployeeType[0] + " to increase CPS: +" + CoinManager.instance.Display(addPerSec[0]);
             ECount[0].text = EmployeeCount[0] + "";
+            if (count < countSize)
+            {
+                Statues.transform.GetChild(count).gameObject.SetActive(true);
+                count++;
+            }
         }
         else
         {
@@ -87,6 +108,11 @@ public class Store : MonoBehaviour
             EmployeePrice[1] = (ulong)Mathf.CeilToInt(DefaultPrice[1] * (Mathf.Pow(mainDigit, EmployeeCount[1])));
             Description[1].text = "Cost : " + CoinManager.instance.Display(EmployeePrice[1]) + " c\nBuy " + EmployeeType[1] + " to increase CPS: +" + CoinManager.instance.Display(addPerSec[1]);
             ECount[1].text = EmployeeCount[1] + "";
+            if (count < countSize)
+            {
+                Statues.transform.GetChild(count).gameObject.SetActive(true);
+                count++;
+            }
         }
         else
         {
@@ -104,6 +130,11 @@ public class Store : MonoBehaviour
             EmployeePrice[2] = (ulong)Mathf.CeilToInt(DefaultPrice[2] * (Mathf.Pow(mainDigit, EmployeeCount[2])));
             Description[2].text = "Cost : " + CoinManager.instance.Display(EmployeePrice[2]) + " c\nBuy " + EmployeeType[2] + " to increase CPS: +" + CoinManager.instance.Display(addPerSec[2]);
             ECount[2].text = EmployeeCount[2] + "";
+            if (count < countSize)
+            {
+                Statues.transform.GetChild(count).gameObject.SetActive(true);
+                count++;
+            }
         }
         else
         {
@@ -121,6 +152,11 @@ public class Store : MonoBehaviour
             EmployeePrice[3] = (ulong)Mathf.CeilToInt(DefaultPrice[3] * (Mathf.Pow(mainDigit, EmployeeCount[3])));
             Description[3].text = "Cost : " + CoinManager.instance.Display(EmployeePrice[3]) + " c\nBuy " + EmployeeType[3] + " to increase CPS: +" + CoinManager.instance.Display(addPerSec[3]);
             ECount[3].text = EmployeeCount[3] + "";
+            if (count < countSize)
+            {
+                Statues.transform.GetChild(count).gameObject.SetActive(true);
+                count++;
+            }
         }
         else
         {
@@ -138,6 +174,11 @@ public class Store : MonoBehaviour
             EmployeePrice[4] = (ulong)Mathf.CeilToInt(DefaultPrice[4] * (Mathf.Pow(mainDigit, EmployeeCount[4])));
             Description[4].text = "Cost : " + CoinManager.instance.Display(EmployeePrice[4]) + " c\nBuy " + EmployeeType[4] + " to increase CPS: +" + CoinManager.instance.Display(addPerSec[4]);
             ECount[4].text = EmployeeCount[4] + "";
+            if (count < countSize)
+            {
+                Statues.transform.GetChild(count).gameObject.SetActive(true);
+                count++;
+            }
         }
         else
         {
@@ -155,6 +196,11 @@ public class Store : MonoBehaviour
             EmployeePrice[5] = (ulong)Mathf.CeilToInt(DefaultPrice[5] * (Mathf.Pow(mainDigit, EmployeeCount[5])));
             Description[5].text = "Cost : " + CoinManager.instance.Display(EmployeePrice[5]) + " c\nBuy " + EmployeeType[5] + " to increase CPS: +" + CoinManager.instance.Display(addPerSec[5]);
             ECount[5].text = EmployeeCount[5] + "";
+            if (count < countSize)
+            {
+                Statues.transform.GetChild(count).gameObject.SetActive(true);
+                count++;
+            }
         }
         else
         {
@@ -172,6 +218,11 @@ public class Store : MonoBehaviour
             EmployeePrice[6] = (ulong)Mathf.CeilToInt(DefaultPrice[6] * (Mathf.Pow(mainDigit, EmployeeCount[6])));
             Description[6].text = "Cost : " + CoinManager.instance.Display(EmployeePrice[6]) + " c\nBuy " + EmployeeType[6] + " to increase CPS: +" + CoinManager.instance.Display(addPerSec[6]);
             ECount[6].text = EmployeeCount[6] + "";
+            if (count < countSize)
+            {
+                Statues.transform.GetChild(count).gameObject.SetActive(true);
+                count++;
+            }
         }
         else
         {
@@ -189,6 +240,11 @@ public class Store : MonoBehaviour
             EmployeePrice[7] = (ulong)Mathf.CeilToInt(DefaultPrice[7] * (Mathf.Pow(mainDigit, EmployeeCount[0])));
             Description[7].text = "Cost : " + CoinManager.instance.Display(EmployeePrice[7]) + " c\nBuy " + EmployeeType[7] + " to increase CPS: +" + CoinManager.instance.Display(addPerSec[7]);
             ECount[7].text = EmployeeCount[7] + "";
+            if (count < countSize)
+            {
+                Statues.transform.GetChild(count).gameObject.SetActive(true);
+                count++;
+            }
         }
         else
         {
@@ -206,6 +262,11 @@ public class Store : MonoBehaviour
             EmployeePrice[8] = (ulong)Mathf.CeilToInt(DefaultPrice[8] * (Mathf.Pow(mainDigit, EmployeeCount[8])));
             Description[8].text = "Cost : " + CoinManager.instance.Display(EmployeePrice[8]) + " c\nBuy " + EmployeeType[8] + " to increase CPS: +" + CoinManager.instance.Display(addPerSec[8]);
             ECount[8].text = EmployeeCount[8] + "";
+            if (count < countSize)
+            {
+                Statues.transform.GetChild(count).gameObject.SetActive(true);
+                count++;
+            }
         }
         else
         {
@@ -223,6 +284,11 @@ public class Store : MonoBehaviour
             EmployeePrice[9] = (ulong)Mathf.CeilToInt(DefaultPrice[9] * (Mathf.Pow(mainDigit, EmployeeCount[9])));
             Description[9].text = "Cost : " + CoinManager.instance.Display(EmployeePrice[9]) + " c\nBuy " + EmployeeType[9] + " to increase CPS: +" + CoinManager.instance.Display(addPerSec[9]);
             ECount[9].text = EmployeeCount[9] + "";
+            if (count < countSize)
+            {
+                Statues.transform.GetChild(count).gameObject.SetActive(true);
+                count++;
+            }
         }
         else
         {
@@ -233,9 +299,11 @@ public class Store : MonoBehaviour
     {
         for(int i=0;i<10;i++)
         {
+            
             PlayerPrefs.SetInt("EmployeeCount" + (i + 1), EmployeeCount[i]);
             PlayerPrefs.SetString("EmployeePrice" + (i + 1), EmployeePrice[i].ToString());
             PlayerPrefs.SetString("AddPerSec" + (i + 1), addPerSec[i].ToString());
         }
+        PlayerPrefs.SetInt("Count", count);
     }
 }
