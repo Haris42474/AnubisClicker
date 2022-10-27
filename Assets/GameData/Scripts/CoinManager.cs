@@ -76,9 +76,9 @@ public class CoinManager : MonoBehaviour
         {
             converted = (valueToConvert / 1000000f).ToString("f3") + "M";
         }
-        else if (valueToConvert >= 999)
+        else if (valueToConvert >= 1000)
         {
-            converted = (valueToConvert / 999f).ToString("f3") + "K";
+            converted = (valueToConvert / 1000f).ToString("f3") + "K";
         }
         else
         {
