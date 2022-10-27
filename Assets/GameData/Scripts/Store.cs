@@ -63,9 +63,15 @@ public class Store : MonoBehaviour
         {
             Description[i].text = "Cost : " + CoinManager.instance.Display(EmployeePrice[i]) + " c\nBuy " + EmployeeType[i] + " to increase CPS: +" + CoinManager.instance.Display(addPerSec[i]);
             ECount[i].text = EmployeeCount[i] + "";
-            if (EmployeeCount[i] > 0 && count == 0)
+        }
+        if (count == 0)
+        {
+            for (int i = 0; i < 10; i++)
             {
-                count += EmployeeCount[i];
+                if (EmployeeCount[i] > 0)
+                {
+                    count += EmployeeCount[i];
+                }
             }
         }
         

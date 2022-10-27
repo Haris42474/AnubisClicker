@@ -29,7 +29,7 @@ public class CoinManager : MonoBehaviour
 
         load();
 
-        InvokeRepeating("SaveGame", 5f, 60f);
+        InvokeRepeating("SaveGame", 3f, 1f);
         temp = TotalCoins;
     }
 
